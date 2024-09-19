@@ -1,12 +1,19 @@
 === FAU Mobility Plugin ===
 
 Contributors: Felix Back
+
 Tags: map, openstreetmap, leaflet, embedding, CO2 calculator, mobility options, Gutenberg block
+
 Requires at least: 5.0
+
 Tested up to: 5.9
+
 Requires PHP: 7.2
+
 Stable tag: 1.1
+
 License: GPLv2 or later
+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin provides mobility tools including a CO2 emission calculator and a map of mobility options in Erlangen and Nuremberg, utilizing OpenStreetMap, Leaflet and chart.js.
