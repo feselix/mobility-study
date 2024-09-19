@@ -1,25 +1,25 @@
 <?php
 /*
-Plugin Name: Map Openstreet Plugin
-Description: Provides a map display with a dynamic sidebar. For support, email me at: felix.beck@iqonic.de
+Plugin Name:  Mobility  Map Plugin (Supported by Open Street Map)
+Description: Provides a map display with a dynamic sidebar and CO2 calculator. For support, email  at: felix.beck@iqonic.de
 Version: 1.0
 Author: Felix Back
 */
 
 defined('ABSPATH') or die('Direct script access disallowed.');
 
-function map_openstreet_example_enqueue_scripts()
+function mobility_map_enqueue_scripts()
 {
 	global $post;  // Access the global $post variable to check the content of the current page or post.
 	if (is_a($post, 'WP_Post')) {
-		$uses_shortcode = has_shortcode($post->post_content, 'map_openstreet');
+		$uses_shortcode = has_shortcode($post->post_content, 'mobility_map');
 
 		// Parse blocks and check for block usage
 		$blocks = parse_blocks($post->post_content);
 		$uses_block = false;
 
 		foreach ($blocks as $block) {
-			if ($block['blockName'] === 'map-openstreet/map-block') {
+			if ($block['blockName'] === 'mobility-map/map-block') {
 				$uses_block = true;
 				break;
 			}
@@ -42,7 +42,7 @@ function map_openstreet_example_enqueue_scripts()
 			wp_enqueue_script('leaflet-loading-js', 'https://karte.fau.de/assets/v1/leaflet.loading/Control.Loading.js', ['leaflet-js'], '1.0.0', true);
 			wp_enqueue_script('leaflet-sync-js', 'https://karte.fau.de/assets/v1/leaflet.sync/L.Map.Sync.js', ['leaflet-js'], '1.0.0', true);
 
-			wp_enqueue_script('map-openstreet-js', plugins_url('/assets/js/script.js', __FILE__), ['leaflet-js'], '1.0.0', true);
+			wp_enqueue_script('mobility-map-js', plugins_url('/assets/js/script.js', __FILE__), ['leaflet-js'], '1.0.0', true);
 
 			$icons = [
 				"default" => plugins_url('assets/icons/default.svg', __FILE__),
@@ -60,7 +60,7 @@ function map_openstreet_example_enqueue_scripts()
 				"E-Scooter Mobilpunkt"     => plugins_url('assets/icons/electric-scooter.svg', __FILE__)
 			];
 
-			wp_localize_script('map-openstreet-js', 'mapOpenstreetData', [
+			wp_localize_script('mobility-map-js', 'mapMobilitytData', [
 				'dataUrl' => plugins_url('/assets/js/data.json', __FILE__),
 				'icons' => $icons
 			]);
@@ -68,14 +68,15 @@ function map_openstreet_example_enqueue_scripts()
 	}
 }
 
-add_action('wp_enqueue_scripts', 'map_openstreet_example_enqueue_scripts');
+add_action('wp_enqueue_scripts', 'mobility_map_enqueue_scripts');
 
 
 
 
 
 
-//////////////////////Chart  Enquueue Scripst
+//////////////////////Chart  Enquueue Scripst////////////////////////////
+//The enuqye will only be happend when block or shortcode will be used on any page
 function co2_emissions_enqueue_scripts()
 {
 	global $post;
@@ -87,7 +88,7 @@ function co2_emissions_enqueue_scripts()
 		$uses_block = false;
 
 		foreach ($blocks as $block) {
-			if ($block['blockName'] === 'map-openstreet/co2-block') {
+			if ($block['blockName'] === 'mobility-map/co2-block') {
 				$uses_block = true;
 				break;
 			}
@@ -104,10 +105,10 @@ function co2_emissions_enqueue_scripts()
 }
 add_action('wp_enqueue_scripts', 'co2_emissions_enqueue_scripts');
 
-function map_openstreet_register_block_assets()
+function mobility_map_register_block_assets()
 {
 	wp_register_script(
-		'map-openstreet-block-js',
+		'mobility-map-block-js',
 		plugins_url('assets/js/block.js', __FILE__),
 		array('wp-blocks', 'wp-element', 'wp-editor'),
 		'1.0.0',
@@ -115,28 +116,28 @@ function map_openstreet_register_block_assets()
 	);
 
 	wp_register_style(
-		'map-openstreet-block-css',
+		'mobility-map-block-css',
 		plugins_url('assets/css/block-editor.css', __FILE__),
 		array(),
 		'1.0.0'
 	);
 
-	register_block_type('map-openstreet/map-block', array(
-		'editor_script' => 'map-openstreet-block-js',
-		'editor_style' => 'map-openstreet-block-css',
-		'render_callback' => 'map_openstreet_render_map_block',
+	register_block_type('mobility-map/map-block', array(
+		'editor_script' => 'mobility-map-block-js',
+		'editor_style' => 'mobility-map-block-css',
+		'render_callback' => 'mobility_map_render_map_block',
 	));
 
-	register_block_type('map-openstreet/co2-block', array(
-		'editor_script' => 'map-openstreet-block-js',
-		'editor_style' => 'map-openstreet-block-css',
-		'render_callback' => 'map_openstreet_render_co2_block',
+	register_block_type('mobility-map/co2-block', array(
+		'editor_script' => 'mobility-map-block-js',
+		'editor_style' => 'mobility-map-block-css',
+		'render_callback' => 'mobility_map_render_co2_block',
 	));
 }
-add_action('init', 'map_openstreet_register_block_assets');
+add_action('init', 'mobility_map_register_block_assets');
 
 // Render callback for Map block
-function map_openstreet_render_map_block($attributes, $content)
+function mobility_map_render_map_block($attributes, $content)
 {
 	ob_start();
 	include(plugin_dir_path(__FILE__) . 'template/map-template.php');
@@ -144,7 +145,7 @@ function map_openstreet_render_map_block($attributes, $content)
 }
 
 // Render callback for CO2 emissions block
-function map_openstreet_render_co2_block($attributes, $content)
+function mobility_map_render_co2_block($attributes, $content)
 {
 	ob_start();
 	include(plugin_dir_path(__FILE__) . 'template/chart-template.php');
@@ -152,14 +153,14 @@ function map_openstreet_render_co2_block($attributes, $content)
 }
 
 // Shortcode compatibility
-function map_open_street_shortcode()
+function map_mobility_map_shortcode()
 {
-	return map_openstreet_render_map_block([], '');
+	return mobility_map_render_map_block([], '');
 }
-add_shortcode('map_openstreet', 'map_open_street_shortcode');
+add_shortcode('mobility_map', 'map_mobility_map_shortcode');
 
 function co2_emissions_calculator_shortcode()
 {
-	return map_openstreet_render_co2_block([], '');
+	return mobility_map_render_co2_block([], '');
 }
 add_shortcode('co2_emissions_calculator', 'co2_emissions_calculator_shortcode');

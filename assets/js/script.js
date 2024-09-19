@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to return a custom icon based on the category
     function getCategoryIcon(category) {
 
-        var iconUrl = mapOpenstreetData.icons[category] || mapOpenstreetData.icons.default; // Default icon if category not matched
+        var iconUrl = mapMobilitytData.icons[category] || mapMobilitytData.icons.default; // Default icon if category not matched
         return L.icon({
             iconUrl: iconUrl,
             iconSize: [25, 41], // Size of the icon
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    fetch(mapOpenstreetData.dataUrl)
+    fetch(mapMobilitytData.dataUrl)
         .then(response => response.json())
         .then(data => {
             data.locations.forEach(function (item) {

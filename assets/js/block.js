@@ -1,8 +1,8 @@
 const { registerBlockType } = wp.blocks;
 const el = wp.element.createElement;
 
-registerBlockType('map-openstreet/map-block', {
-    title: 'Map OpenStreet',
+registerBlockType('mobility-map/map-block', {
+    title: 'Mobility Map',
     icon: 'location',
     category: 'widgets',
     edit: function () {
@@ -13,7 +13,7 @@ registerBlockType('map-openstreet/map-block', {
     }
 });
 
-registerBlockType('map-openstreet/co2-block', {
+registerBlockType('mobility-map/co2-block', {
     title: 'CO2 Emissions Calculator',
     icon: 'chart-bar',
     category: 'widgets',
