@@ -1,4 +1,5 @@
 === FAU Mobility Plugin ===
+
 Contributors: Felix Back
 Tags: map, openstreetmap, leaflet, embedding, CO2 calculator, mobility options, Gutenberg block
 Requires at least: 5.0
