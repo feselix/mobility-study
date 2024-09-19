@@ -23,8 +23,7 @@ To use the Map Openstreet Plugin, follow these steps:
 
 1. **Edit a Page or Post**: Open the editor for the page or post where you want the map to appear.
 2. **Add the Block**: Click on the "+" button to add a new block and search for "Map Openstreet". Select the block to add it to your post.
-3. **Configure the Map**: Once the block is added, you can configure it in the block settings panel. Options include setting the initial zoom level, center coordinates, and markers.
-4. **Publish/Update**: After configuring the map, publish or update your post/page.
+3. **Publish/Update**: After configuring the map, publish or update your post/page.
 
  
 
