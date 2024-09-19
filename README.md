@@ -41,5 +41,4 @@ Yes, the Map Openstreet Plugin is designed to work with any theme that supports 
 = 1.0 =
 Initial release. Enjoy the plugin!
 
-== Support ==
-For support, please visit [Example Support Page](http://example.com/support) or contact us through the WordPress plugin support forum.
+ 
