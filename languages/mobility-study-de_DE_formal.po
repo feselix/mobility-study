@@ -34,8 +34,6 @@ msgstr "Nutzung (%)"
 msgid "Share [%]"
 msgstr "Anteil [%]"
 
-msgid "Modal Split of the selected distance"
-msgstr "Modal Split der gewählten Entfernung"
 
 msgid "CO₂ equivalents [kg/year]"
 msgstr "CO₂-Äquivalente [kg/Jahr]"
@@ -69,6 +67,16 @@ msgstr "kg CO₂ pro Jahr."
 
 msgid "would cause you to emit"
 msgstr "würde dazu führen, dass Sie ausstoßen"
+
+
+msgid "would cause you to emit kg CO₂ more per year."
+msgstr "würde dazu führen, dass Sie kg CO₂ mehr pro Jahr ausstoßen."
+
+
+msgid "Please enter valid values ​​for distance and frequency."
+msgstr "Bitte geben Sie gültige Werte für Distanz und Häufigkeit ein."
+
+
 
 msgid "kg CO₂ more per year."
 msgstr "kg mehr CO₂ pro Jahr."
@@ -118,7 +126,10 @@ msgstr "Zu Fuß"
 msgid "Bicycle / E-bike / E-scooter / Pedelec"
 msgstr "Fahrrad / E-Rad / E-Roller / Pedelec"
 
-msgid "Public transport"
+msgid "Bicycle"
+msgstr "Fahrrad"
+
+msgid "Public Transport"
 msgstr "ÖPNV"
 
 msgid "Car"
@@ -175,8 +186,7 @@ msgstr "Aufgrund vorlesungsfreier Zeit bzw. Urlaubs- und Feiertage rechnen wir i
 msgid "kg CO₂ per year could be saved."
 msgstr "kg CO₂ pro Jahr könnten eingespart werden."
 
-msgid "could save you"
-msgstr "könnten Ihnen einsparen"
+
 msgid "is the most used mode of transport."
 msgstr "ist das meistgenutzte Verkehrsmittel."
 
@@ -230,3 +240,9 @@ msgstr "Ihr CO₂-Ausstoß"
 
 msgid "CO₂-Äquivalente [kg/Jahr]"
 msgstr "CO₂-Äquivalente [kg/Jahr]"  # Modify the translation if needed
+
+
+
+
+msgid "Your current CO₂ emission"
+msgstr "Ihr aktueller CO₂-Ausstoß"

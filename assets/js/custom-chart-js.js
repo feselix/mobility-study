@@ -69,7 +69,7 @@ function calculateUserEmission() {
     const transport = document.getElementById('transport').value;
 
     if (isNaN(distance) || isNaN(frequency)) {
-        alert('Bitte geben Sie gültige Werte für Distanz und Häufigkeit ein.');
+        alert(chartTranslations.valid_distance);
         return null;
     }
 
@@ -82,10 +82,10 @@ function calculateUserEmission() {
 
 function getTransportPhrase(transport) {
     const transportPhrases = {
-        'Zu Fuß': chartTranslations.on_foot_phrase || 'Zu Fuß',  // Assuming you have these keys in your translations
-        'Fahrrad': chartTranslations.bicycle_phrase || 'Mit dem Fahrrad',
-        'ÖPNV': chartTranslations.public_transport_phrase || 'Mit dem ÖPNV',
-        'Auto': chartTranslations.car_phrase || 'Mit dem Auto'
+        'Zu Fuß': chartTranslations.on_foot || 'Zu Fuß',  // Assuming you have these keys in your translations
+        'Fahrrad': chartTranslations.bicycle || 'Mit dem Fahrrad',
+        'ÖPNV': chartTranslations.public_transport || 'Mit dem ÖPNV',
+        'Auto': chartTranslations.car || 'Mit dem Auto'
     };
     return transportPhrases[transport] || transport;
 }
@@ -102,10 +102,10 @@ function updateChart() {
     const totalDistance = distance * 2 * frequency * 43.5; // Hin- und Rückweg, Frequenz pro Woche, 43.5 Wochen
 
     const emissionData = [
-        { label: 'Zu Fuß', emission: (totalDistance * co2EmissionRates.foot) / 1000 },
-        { label: 'Fahrrad', emission: (totalDistance * co2EmissionRates.bike) / 1000 },
-        { label: 'ÖPNV', emission: (totalDistance * co2EmissionRates.opnv) / 1000 },
-        { label: 'Auto', emission: (totalDistance * co2EmissionRates.miv) / 1000 }
+        { label: chartTranslations.foot || 'Zu Fuß', emission: (totalDistance * co2EmissionRates.foot) / 1000 },
+        { label: chartTranslations.bike || 'Fahrrad', emission: (totalDistance * co2EmissionRates.bike) / 1000 },
+        { label: chartTranslations.public_transport || 'ÖPNV', emission: (totalDistance * co2EmissionRates.opnv) / 1000 },
+        { label: chartTranslations.car || 'Auto', emission: (totalDistance * co2EmissionRates.miv) / 1000 }
     ];
 
 

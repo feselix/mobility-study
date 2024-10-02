@@ -84,11 +84,6 @@ function mobility_map_enqueue_scripts()
 					'Bahnstation' => __('Train Station', 'mobility-study')
 				)
 			]);
-
-			$current_language = pll_current_language();
-			echo 'Current language is: ' . $current_language;
-
-			echo __('Category', 'mobility-study');
 			//	die();
 		}
 	}
@@ -154,6 +149,7 @@ function mobility_map_co2_emissions_enqueue_scripts()
 				'kg_per_year' => __('kg per year.', 'mobility-study'),
 				'kg_CO2_per_year_could_be_saved' => __('kg CO₂ per year could be saved.', 'mobility-study'),
 				'more_co2_per_year' => __('would cause you to emit kg CO₂ more per year.', 'mobility-study'),
+				'valid_distance' => __('Please enter valid values ​​for distance and frequency.', 'mobility-study'),
 				'most_used_transport' => __('is the most used mode of transport.', 'mobility-study'),
 				'assumptions' => __('Assumptions:', 'mobility-study'),
 				'modal_split_selected_distance' => __('Modal Split of the selected distance', 'mobility-study'),
