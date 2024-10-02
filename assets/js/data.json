@@ -1164,7 +1164,7 @@
             "ID": 148,
             "latitude": 49.574612523484580,
             "longitude": 11.026949364199908,
-            "category": "E-Ladesäule",
+            "category": "E-Ladesaule",
             "Name": "Martensstra\u00dfe",
             "address": "Martensstra\u00dfe 5a"
         },
@@ -1172,7 +1172,7 @@
             "ID": 149,
             "latitude": 49.5813254856437,
             "longitude": 11.028748332268798,
-            "category": "E-Ladesäule",
+            "category": "E-Ladesaule",
             "Name": "Staudtstra\u00dfe",
             "address": "Staudtstra\u00dfe 2"
         },
@@ -1180,7 +1180,7 @@
             "ID": 150,
             "latitude": 49.57319704613242,
             "longitude": 11.024153627699436,
-            "category": "E-Ladesäule",
+            "category": "E-Ladesaule",
             "Name": "Immerwahrstra\u00dfe",
             "address": "Immerwahrstra\u00dfe 2a"
         },
@@ -1188,7 +1188,7 @@
             "ID": 151,
             "latitude": 49.578112247494110,
             "longitude": 11.031254394926944,
-            "category": "E-Ladesäule",
+            "category": "E-Ladesaule",
             "Name": "Nikolaus-Fiebiger-Stra\u00dfe",
             "address": "Nikolaus-Fiebiger-Stra\u00dfe 12"
         },

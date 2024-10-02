@@ -1,0 +1,14 @@
+# vscode
+.vscode/
+
+# NetBeans
+/nbproject/
+/nbproject/private/
+/build/
+/dist/
+
+# PhpStorm
+.idea/
+
+# macOS
+.DS_Store

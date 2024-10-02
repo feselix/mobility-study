@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+
+msgid "up to under 2.5 km"
+msgstr "bis unter 2,5 km"
+
+msgid "2.5 to under 5 km"
+msgstr "2,5 bis unter 5 km"
+
+msgid "5 to under 10 km"
+msgstr "5 bis unter 10 km"
+
+msgid "10 to under 25 km"
+msgstr "10 bis unter 25 km"
+
+msgid "25 to under 50 km"
+msgstr "25 bis unter 50 km"
+
+msgid "50 km and more"
+msgstr "mehr als 50 km"
+
+msgid "Please enter valid values for distance and frequency."
+msgstr "Bitte geben Sie gültige Werte für Distanz und Häufigkeit ein."
+
+msgid "Your current CO₂ emissions"
+msgstr "Ihr aktueller CO₂-Ausstoß"
+
+msgid "Usage (%)"
+msgstr "Nutzung (%)"
+
+msgid "Share [%]"
+msgstr "Anteil [%]"
+
+msgid "Modal Split of the selected distance"
+msgstr "Modal Split der gewählten Entfernung"
+
+msgid "CO₂ equivalents [kg/year]"
+msgstr "CO₂-Äquivalente [kg/Jahr]"
+
+msgid "Your annual CO₂ emissions are:"
+msgstr "Ihr jährlicher CO₂-Ausstoß beträgt:"
+
+msgid "kg"
+msgstr "kg"
+
+msgid "Short analysis:"
+msgstr "Kurze Analyse:"
+
+msgid "uses"
+msgstr "nutzt"
+
+msgid "has the lowest CO₂ emissions with"
+msgstr "hat den geringsten CO₂-Ausstoß mit"
+
+msgid "kg per year."
+msgstr "kg pro Jahr."
+
+msgid "is the most used mode of transport."
+msgstr "ist das meistgenutzte Verkehrsmittel."
+
+msgid "could save you"
+msgstr "könnte Ihnen einsparen"
+
+msgid "kg CO₂ per year."
+msgstr "kg CO₂ pro Jahr."
+
+msgid "would cause you to emit"
+msgstr "würde dazu führen, dass Sie ausstoßen"
+
+msgid "kg CO₂ more per year."
+msgstr "kg mehr CO₂ pro Jahr."
+
+msgid "Assumptions:"
+msgstr "Annahmen:"
+
+msgid "© OpenStreetMap"
+msgstr "© OpenStreetMap"
+
+msgid "Category: "
+msgstr "Kategorie: "
+
+msgid "Address: "
+msgstr "Adresse: "
+
+msgid "Error loading the data: "
+msgstr "Fehler beim Laden der Daten: "
+
+msgid "FAU CO₂ Emissions Calculator"
+msgstr "FAU CO₂-Emissions-Rechner"
+
+msgid "Determine your current CO₂ emissions, discover savings through alternative means of transport, and see how you compare to others."
+msgstr "Ermitteln Sie Ihren aktuellen CO₂-Ausstoß, entdecken Sie Einsparmöglichkeiten durch alternative Verkehrsmittel und sehen Sie, wie Sie im Vergleich zu anderen abschneiden."
+
+msgid "My route to FAU in km:"
+msgstr "Meine Wegstrecke zur FAU in km:"
+
+msgid "e.g., 4.5"
+msgstr "z.B. 4,5"
+
+msgid "Trips per week:"
+msgstr "Fahrten pro Woche:"
+
+msgid "e.g., 5"
+msgstr "z.B. 5"
+
+msgid "Mode of transport:"
+msgstr "Verkehrsmittel:"
+
+msgid "Choose mode of transport"
+msgstr "- Verkehrsmittel wählen -"
+
+msgid "On foot"
+msgstr "Zu Fuß"
+
+msgid "Bicycle / E-bike / E-scooter / Pedelec"
+msgstr "Fahrrad / E-Rad / E-Roller / Pedelec"
+
+msgid "Public transport"
+msgstr "ÖPNV"
+
+msgid "Car"
+msgstr "Auto"
+
+msgid "I am:"
+msgstr "Ich bin:"
+
+msgid "Select"
+msgstr "- Auswählen -"
+
+msgid "Student"
+msgstr "Student/in"
+
+msgid "Employee"
+msgstr "Mitarbeiter/in"
+
+msgid "Calculate"
+msgstr "Berechnen"
+
+msgid "Bicycle Repair Station"
+msgstr "Fahrrad-Reparaturstation"
+
+msgid "Bicycle Workshop"
+msgstr "Fahrradwerkstatt"
+
+msgid "VAG Rad Station"
+msgstr "VAG-Rad-Station"
+
+msgid "Shower Facility"
+msgstr "Duschmöglichkeit"
+
+msgid "Mobility Point"
+msgstr "Mobilpunkt"
+
+msgid "Charging Station"
+msgstr "Ladestation"
+
+msgid "Car Sharing"
+msgstr "Car-Sharing"
+
+msgid "Free City Line 299"
+msgstr "Kostenfreie CityLinie 299"
+
+msgid "Bus Stop"
+msgstr "Bushaltestelle"
+
+msgid "Only for FAU members"
+msgstr "Nur für FAU-Mitglieder"
+
+msgid "Due to lecture-free time or holidays and public holidays, we calculate an average of 43.5 weeks per year in which you travel to FAU."
+msgstr "Aufgrund vorlesungsfreier Zeit bzw. Urlaubs- und Feiertage rechnen wir im Durchschnitt mit 43,5 Wochen pro Jahr, in denen zur FAU gefahren wird."
+
+msgid "kg CO₂ per year could be saved."
+msgstr "kg CO₂ pro Jahr könnten eingespart werden."
+
+msgid "could save you"
+msgstr "könnten Ihnen einsparen"
+msgid "is the most used mode of transport."
+msgstr "ist das meistgenutzte Verkehrsmittel."
+
+
+msgid "Your annual CO₂ emissions are:"
+msgstr "Ihr jährlicher CO₂-Ausstoß beträgt:"
+
+msgid "Brief Analysis:"
+msgstr "Kurzanalyse:"
+
+msgid "uses"
+msgstr "nutzt"
+
+msgid "in their distance category."
+msgstr "in Ihrer Entfernungskategorie."
+
+msgid "has the lowest CO₂ emissions with"
+msgstr "hat den geringsten CO₂-Ausstoß mit"
+
+msgid "kg per year."
+msgstr "kg pro Jahr."
+
+msgid "Assumptions:"
+msgstr "Annahmen:"
+msgid "Modal Split of the selected distance"
+msgstr "Modal Split der ausgewählten Entfernung"
+
+msgid "Share [%]"
+msgstr "Anteil [%]"
+
+msgid "Usage (%)"
+msgstr "Nutzung (%)"
+
+msgid "on_foot_phrase"
+msgstr "Zu Fuß"
+
+msgid "bicycle_phrase"
+msgstr "Mit dem Fahrrad"
+
+msgid "public_transport_phrase"
+msgstr "Mit dem ÖPNV"
+
+msgid "car_phrase"
+msgstr "Mit dem Auto"
+
+msgid "current_co2_emission"
+msgstr "Ihr aktueller CO₂-Ausstoß"
+
+msgid "your_co2_emission"
+msgstr "Ihr CO₂-Ausstoß"
+
+msgid "CO₂-Äquivalente [kg/Jahr]"
+msgstr "CO₂-Äquivalente [kg/Jahr]"  # Modify the translation if needed

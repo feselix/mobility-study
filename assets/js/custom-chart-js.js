@@ -52,14 +52,13 @@ const colors = {
 
 function translateTransport(transport) {
     const translations = {
-        foot: 'Zu Fuß',
-        bike: 'Fahrrad',
-        opnv: 'ÖPNV',
-        miv: 'Auto'
+        foot: chartTranslations.on_foot,
+        bike: chartTranslations.bicycle,
+        opnv: chartTranslations.public_transport,
+        miv: chartTranslations.car
     };
     return translations[transport] || transport;
 }
-
 function formatNumber(number) {
     return number.toFixed(2).replace('.', ',');
 }
@@ -82,14 +81,15 @@ function calculateUserEmission() {
 }
 
 function getTransportPhrase(transport) {
-    switch (transport) {
-        case 'Zu Fuß': return 'Zu Fuß';
-        case 'Fahrrad': return 'Mit dem Fahrrad';
-        case 'ÖPNV': return 'Mit dem ÖPNV';
-        case 'Auto': return 'Mit dem Auto';
-        default: return transport;
-    }
+    const transportPhrases = {
+        'Zu Fuß': chartTranslations.on_foot_phrase || 'Zu Fuß',  // Assuming you have these keys in your translations
+        'Fahrrad': chartTranslations.bicycle_phrase || 'Mit dem Fahrrad',
+        'ÖPNV': chartTranslations.public_transport_phrase || 'Mit dem ÖPNV',
+        'Auto': chartTranslations.car_phrase || 'Mit dem Auto'
+    };
+    return transportPhrases[transport] || transport;
 }
+
 
 function updateChart() {
     const userEmission = calculateUserEmission();
@@ -136,8 +136,13 @@ function updateChart() {
 
     // Aktualisiere das CO₂-Emissions-Diagramm
     co2Chart.data.datasets = [barData];
-    co2Chart.data.labels = ['Zu Fuß', 'Fahrrad', 'ÖPNV', 'Auto'];
-    co2Chart.options.plugins.title.text = 'Ihr aktueller CO₂-Ausstoß';
+    co2Chart.data.labels = [
+        chartTranslations.on_foot || 'Zu Fuß',
+        chartTranslations.bicycle || 'Fahrrad',
+        chartTranslations.public_transport || 'ÖPNV',
+        chartTranslations.car || 'Auto'
+    ];
+    co2Chart.options.plugins.title.text = chartTranslations.your_current_co2_emission;
     co2Chart.update();
 
     // Nutzungsdaten berechnen
@@ -150,23 +155,25 @@ function updateChart() {
     }
 
     const usageData = [
-        { label: 'Zu Fuß', percentage: userDataset[userType].foot * 100 },
-        { label: 'Fahrrad', percentage: userDataset[userType].bike * 100 },
-        { label: 'ÖPNV', percentage: userDataset[userType].opnv * 100 },
-        { label: 'Auto', percentage: userDataset[userType].miv * 100 }
+        { label: chartTranslations.on_foot, percentage: userDataset[userType].foot * 100 },
+        { label: chartTranslations.bicycle, percentage: userDataset[userType].bike * 100 },
+        { label: chartTranslations.public_transport, percentage: userDataset[userType].opnv * 100 },
+        { label: chartTranslations.car, percentage: userDataset[userType].miv * 100 }
     ];
 
     // Aktualisiere das Modal-Split-Diagramm
     modalSplitChart.data.datasets = [{
-        label: 'Nutzung (%)',
+        label: chartTranslations.usage_percent,
         data: usageData.map(d => d.percentage),
         backgroundColor: ['#041E42', '#0044A9', '#04316A', '#CED9E7'],
         borderColor: ['#041E42', '#0044A9', '#04316A', '#CED9E7'],
         borderWidth: 1
     }];
     modalSplitChart.data.labels = usageData.map(d => d.label);
-    modalSplitChart.options.plugins.title.text = 'Modal Split der ausgewählten Entfernung';
-    modalSplitChart.options.scales.y.title.text = 'Anteil [%]';
+    modalSplitChart.options.plugins.title.text = chartTranslations.modal_split_selected_distance || 'Modal Split of the selected distance';
+
+    // Update the Y-axis title
+    modalSplitChart.options.scales.y.title.text = chartTranslations.share_percentage || 'Share [%]';
     modalSplitChart.update();
 
     const currentUsage = usageData.find(d => d.label === translateTransport(currentTransport)).percentage;
@@ -175,32 +182,35 @@ function updateChart() {
 
     // Ergebnisse anzeigen
     let resultHTML = `
-        <h4>Ihr jährlicher CO₂-Ausstoß beträgt: ${formatNumber(userEmission)} kg</h4>
-        <h4>Kurzanalyse:</h4>
-        <ul>
-            <li>${getTransportPhrase(translateTransport(currentTransport))} nutzen ${formatNumber(currentUsage)}% der ${userType === 'students' ? 'Studierenden' : 'Mitarbeitenden'} in Ihrer Entfernungskategorie.</li>
-            <li>${getTransportPhrase(lowestEmissionTransport.label)} hat den geringsten CO₂-Ausstoß mit ${formatNumber(lowestEmissionTransport.emission)} kg pro Jahr.</li>
-    `;
+    <h4>${chartTranslations.annual_co2_emissions} ${formatNumber(userEmission)} kg</h4>
+    <h4>${chartTranslations.brief_analysis}</h4>
+    <ul>
+        <li>${getTransportPhrase(translateTransport(currentTransport))} ${chartTranslations.uses} ${formatNumber(currentUsage)}% ${chartTranslations.in_distance_category}</li>
+        <li>${getTransportPhrase(lowestEmissionTransport.label)} ${chartTranslations.has_lowest_co2_with} ${formatNumber(lowestEmissionTransport.emission)} ${chartTranslations.kg_per_year}</li>
+`;
 
     if (translateTransport(currentTransport) !== highestUsageTransport.label) {
-        resultHTML += `<li>${getTransportPhrase(highestUsageTransport.label)} ist das meistgenutzte Verkehrsmittel (${formatNumber(highestUsageTransport.percentage)}%).</li>`;
+        resultHTML += `<li>${getTransportPhrase(highestUsageTransport.label)} ${chartTranslations.most_used_transport} (${formatNumber(highestUsageTransport.percentage)}%).</li>`;
+
     }
 
     emissionData.forEach(d => {
         if (d.label !== translateTransport(currentTransport)) {
             const diff = userEmission - d.emission;
             if (diff > 0) {
-                resultHTML += `<li>${getTransportPhrase(d.label)} könnten Sie ${formatNumber(diff)} kg CO₂ pro Jahr einsparen.</li>`;
+                resultHTML += `<li>${chartTranslations.could_save_you} ${formatNumber(diff)} ${chartTranslations.kg_CO2_per_year_could_be_saved}</li>`;
+
             } else if (diff < 0) {
-                resultHTML += `<li>${getTransportPhrase(d.label)} würden Sie ${formatNumber(Math.abs(diff))} kg CO₂ mehr pro Jahr ausstoßen.</li>`;
+                resultHTML += `<li>${getTransportPhrase(d.label)} ${chartTranslations.more_co2_per_year.replace('kg', formatNumber(Math.abs(diff)))}</li>`;
+
             }
         }
     });
 
     resultHTML += `
         </ul>
-        <h4>Annahmen:</h4>
-        <p>Aufgrund vorlesungsfreier Zeit bzw. Urlaubs- und Feiertage rechnen wir im Durchschnitt mit 43,5 Wochen pro Jahr, in denen zur FAU gefahren wird.</p>
+       <h4>${chartTranslations.assumptions}</h4>
+        <p>${chartTranslations.average_weeks}</p>
     `;
 
     document.getElementById('result').innerHTML = resultHTML;
@@ -211,7 +221,12 @@ const ctx1 = document.getElementById('co2Chart').getContext('2d');
 const co2Chart = new Chart(ctx1, {
     type: 'bar',
     data: {
-        labels: ['Zu Fuß', 'Fahrrad', 'ÖPNV', 'Auto'],
+        labels: [
+            chartTranslations.on_foot || 'Zu Fuß',
+            chartTranslations.bicycle || 'Fahrrad',
+            chartTranslations.public_transport || 'ÖPNV',
+            chartTranslations.car || 'Auto'
+        ],
         datasets: []
     },
     options: {
@@ -227,7 +242,7 @@ const co2Chart = new Chart(ctx1, {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'CO₂-Äquivalente [kg/Jahr]'
+                    text: chartTranslations.co2_equivalents
                 }
             }
         },
@@ -238,13 +253,13 @@ const co2Chart = new Chart(ctx1, {
                 labels: {
                     filter: function (item, chart) {
                         // Only show legend for the user's current transport mode
-                        return item.text === 'Ihr CO₂-Ausstoß';
+                        return item.text === chartTranslations.your_co2_emission;
                     }
                 }
             },
             title: {
                 display: true,
-                text: 'Ihr aktueller CO₂-Ausstoß'
+                text: chartTranslations.current_co2_emission
             }
         }
     }
@@ -264,7 +279,7 @@ const modalSplitChart = new Chart(ctx2, {
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Anteil [%]'
+                    text: chartTranslations.share_percentage
                 },
                 max: 100
             }
@@ -275,7 +290,7 @@ const modalSplitChart = new Chart(ctx2, {
             },
             title: {
                 display: true,
-                text: 'Modal Split der ausgewählten Entfernung'
+                text: chartTranslations.modal_split_selected_distance || 'Modal Split der ausgewählten Entfernung'
             }
         }
     }

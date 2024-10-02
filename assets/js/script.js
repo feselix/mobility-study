@@ -3,44 +3,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 22,
-        attribution: '© OpenStreetMap'
+        attribution: mapMobilityData.translations.openStreetMap
     }).addTo(map);
 
     var markerGroups = {};
 
-    // Function to return a custom icon based on the category
     function getCategoryIcon(category) {
-
-        var iconUrl = mapMobilitytData.icons[category] || mapMobilitytData.icons.default; // Default icon if category not matched
+        var normalizedKey = category.toLowerCase().replace(/[\s-]+/g, '_'); // This will replace spaces and hyphens with underscores
+        var iconUrl = mapMobilityData.icons[normalizedKey] || mapMobilityData.icons.default;
+        // console.log("Normalized Key: ", normalizedKey);  // For debugging
+        //  console.log("Icon URL: ", iconUrl);  // For debugging
         return L.icon({
             iconUrl: iconUrl,
-            iconSize: [25, 41], // Size of the icon
-            iconAnchor: [12, 12], // Point of the icon which will correspond to marker's location
-            popupAnchor: [0, -10]  // Point from which the popup should open relative to the iconAnchor
+            iconSize: [25, 41],
+            iconAnchor: [12, 12],
+            popupAnchor: [0, -10]
         });
     }
 
-    fetch(mapMobilitytData.dataUrl)
+    fetch(mapMobilityData.dataUrl)
         .then(response => response.json())
         .then(data => {
             data.locations.forEach(function (item) {
                 var category = item.category;
+                var translatedCategory = mapMobilityData.translations[category] || category;
                 var address = item.address;
-                if (!markerGroups[category]) {
-                    markerGroups[category] = L.layerGroup().addTo(map);
+                if (!markerGroups[translatedCategory]) {
+                    markerGroups[translatedCategory] = L.layerGroup().addTo(map);
                 }
 
-                var customIcon = getCategoryIcon(category);
+                var customIcon = getCategoryIcon(category); // Ensure correct function usage
                 var marker = L.marker([item.latitude, item.longitude], { icon: customIcon })
-                    .bindPopup(`<strong>${item.Name}</strong><br/>Kategorie: ${item.category}` +
-                        (item.address ? `<br/>Adresse: ${item.address}` : '') +
-                        (item.category === 'E-Ladesäule' ? `<br/>Nur für FAU-Angehörige` : ''));
+                    .bindPopup(`<strong>${item.Name}</strong><br/>${mapMobilityData.translations.category}: ${translatedCategory}` +
+                        (item.address ? `<br/>${mapMobilityData.translations.address}: ${item.address}` : '') +
+                        (category === 'E-Ladesäule' ? `<br/>${mapMobilityData.translations.onlyForMembers}` : ''));
 
-                marker.addTo(markerGroups[category]);
+                marker.addTo(markerGroups[translatedCategory]);
             });
 
-            // Add layer control feature
             L.control.layers(null, markerGroups, { collapsed: false }).addTo(map);
         })
-        .catch(error => console.error('Error loading the data: ', error));
+        .catch(error => console.error(mapMobilityData.translations.errorLoadingData, error));
 });
