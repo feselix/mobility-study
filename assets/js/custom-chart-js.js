@@ -82,12 +82,22 @@ function calculateUserEmission() {
 
 function getTransportPhrase(transport) {
     const transportPhrases = {
-        'Zu Fuß': chartTranslations.on_foot || 'Zu Fuß',  // Assuming you have these keys in your translations
-        'Fahrrad': chartTranslations.bicycle || 'Mit dem Fahrrad',
-        'ÖPNV': chartTranslations.public_transport || 'Mit dem ÖPNV',
-        'Auto': chartTranslations.car || 'Mit dem Auto'
+        'Zu Fuß': chartTranslations.on_foot || null,
+        'Fahrrad': chartTranslations.bicycle || null,
+        'ÖPNV': chartTranslations.public_transport || null,
+        'Auto': chartTranslations.car || null,
+        'Car': chartTranslations.car || null,
+        'Bicycle': chartTranslations.bicycle || null,
+        'public_transport': chartTranslations.public_transport || null,
+        'Public Transport': chartTranslations.public_transport || null
+
     };
-    return transportPhrases[transport] || transport;
+
+
+
+
+
+    return transportPhrases[transport];
 }
 
 
@@ -103,7 +113,7 @@ function updateChart() {
 
     const emissionData = [
         { label: chartTranslations.foot || 'Zu Fuß', emission: (totalDistance * co2EmissionRates.foot) / 1000 },
-        { label: chartTranslations.bike || 'Fahrrad', emission: (totalDistance * co2EmissionRates.bike) / 1000 },
+        { label: chartTranslations.bicycle || 'Fahrrad', emission: (totalDistance * co2EmissionRates.bike) / 1000 },
         { label: chartTranslations.public_transport || 'ÖPNV', emission: (totalDistance * co2EmissionRates.opnv) / 1000 },
         { label: chartTranslations.car || 'Auto', emission: (totalDistance * co2EmissionRates.miv) / 1000 }
     ];
@@ -195,10 +205,11 @@ function updateChart() {
     }
 
     emissionData.forEach(d => {
+        console.log(d.label);
         if (d.label !== translateTransport(currentTransport)) {
             const diff = userEmission - d.emission;
             if (diff > 0) {
-                resultHTML += `<li>${chartTranslations.could_save_you} ${formatNumber(diff)} ${chartTranslations.kg_CO2_per_year_could_be_saved}</li>`;
+                resultHTML += `<li>${getTransportPhrase(d.label)} ${chartTranslations.could_save_you} ${formatNumber(diff)} ${chartTranslations.kg_CO2_per_year_could_be_saved}</li>`;
 
             } else if (diff < 0) {
                 resultHTML += `<li>${getTransportPhrase(d.label)} ${chartTranslations.more_co2_per_year.replace('kg', formatNumber(Math.abs(diff)))}</li>`;

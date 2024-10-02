@@ -20,7 +20,7 @@ load_plugin_textdomain('mobility-study', false, basename(dirname(__FILE__)) . '/
         <option value="" disabled selected><?php _e('Choose mode of transport', 'mobility-study'); ?></option>
         <option value="foot"><?php _e('On foot', 'mobility-study'); ?></option>
         <option value="bike"><?php _e('Bicycle / E-bike / E-scooter / Pedelec', 'mobility-study'); ?></option>
-        <option value="opnv"><?php _e('Public transport', 'mobility-study'); ?></option>
+        <option value="opnv"><?php _e('Public Transport', 'mobility-study'); ?></option>
         <option value="miv"><?php _e('Car', 'mobility-study'); ?></option>
     </select>
 

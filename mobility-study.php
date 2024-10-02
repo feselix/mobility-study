@@ -126,6 +126,7 @@ function mobility_map_co2_emissions_enqueue_scripts()
 				'bicycle' => __('Bicycle', 'mobility-study'),
 				'public_transport' => __('Public Transport', 'mobility-study'),
 				'car' => __('Car', 'mobility-study'),
+				'Car' => __('Car', 'mobility-study'),
 				'co2_emission' => __('CO₂ Emission', 'mobility-study'),
 				'your_current_co2_emission' => __('Your current CO₂ emission', 'mobility-study'),
 				'usage' => __('Usage (%)', 'mobility-study'),
