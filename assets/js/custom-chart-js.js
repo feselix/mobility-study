@@ -89,7 +89,8 @@ function getTransportPhrase(transport) {
         'Car': chartTranslations.car || null,
         'Bicycle': chartTranslations.bicycle || null,
         'public_transport': chartTranslations.public_transport || null,
-        'Public Transport': chartTranslations.public_transport || null
+        'Public Transport': chartTranslations.public_transport || null,
+        'On foot': chartTranslations.on_foot || null
 
     };
 
