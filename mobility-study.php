@@ -5,7 +5,7 @@ Description: Provides a map display with a dynamic sidebar and CO2 calculator. F
 Version: 1.0
 Text Domain: mobility-study
 Domain Path: /languages
-Author: Felix Back
+Author: Felix Beck
 */
 
 defined('ABSPATH') or die('Direct script access disallowed.');
@@ -148,6 +148,7 @@ function mobility_map_co2_emissions_enqueue_scripts()
 				'in_distance_category' => __('in their distance category.', 'mobility-study'),
 				'has_lowest_co2_with' => __('has the lowest CO₂ emissions with', 'mobility-study'),
 				'kg_per_year' => __('kg per year.', 'mobility-study'),
+				'kg_CO2_per_year' => __('kg CO₂ per year.', 'mobility-study'),
 				'kg_CO2_per_year_could_be_saved' => __('kg CO₂ per year could be saved.', 'mobility-study'),
 				'more_co2_per_year' => __('would cause you to emit kg CO₂ more per year.', 'mobility-study'),
 				'valid_distance' => __('Please enter valid values ​​for distance and frequency.', 'mobility-study'),

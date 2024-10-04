@@ -210,7 +210,8 @@ function updateChart() {
         if (d.label !== translateTransport(currentTransport)) {
             const diff = userEmission - d.emission;
             if (diff > 0) {
-                resultHTML += `<li>${getTransportPhrase(d.label)} ${chartTranslations.could_save_you} ${formatNumber(diff)} ${chartTranslations.kg_CO2_per_year_could_be_saved}</li>`;
+                resultHTML += `<li>${getTransportPhrase(d.label)} ${chartTranslations.could_save_you} ${formatNumber(diff)} ${chartTranslations.kg_CO2_per_year}</li>`;
+
 
             } else if (diff < 0) {
                 resultHTML += `<li>${getTransportPhrase(d.label)} ${chartTranslations.more_co2_per_year.replace('kg', formatNumber(Math.abs(diff)))}</li>`;
